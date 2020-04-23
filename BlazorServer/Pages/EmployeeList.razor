@@ -1,7 +1,7 @@
 ﻿@page "/"
 @inherits EmployeeListBase
 
-<h3>EmployeeList</h3>
+<h3>EmployeeList - Selected Employee count is = @SelectedEmployeesCount</h3>
 
 <div class="card-deck">
 
@@ -19,7 +19,7 @@
 
         @foreach (var employee in Employeess)
         {
-            <DisplayEmployee Employee="employee" ShowFooter="ShowFooter">
+            <DisplayEmployee Employee="employee" ShowFooter="ShowFooter" OnEmployeeSelection="EmployeeSelectionChanged" >
             </DisplayEmployee>
         }
 
