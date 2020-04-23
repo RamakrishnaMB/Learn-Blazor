@@ -24,7 +24,7 @@
 <b>Name :</b>
 <input @bind="Name" />
 
-<br/>
+<br />
 <b>Name :</b>
 <input @bind="Name" @bind:event="oninput" />
 
@@ -33,5 +33,13 @@
 
     <div @bind-style="Colour" @bind-style:event="onchange">
         <h3>The background colour of this text changes</h3>
+    </div>
+</div>
+
+<div>
+    To count character entered textarea<br />
+    <textarea @bind="Description" @bind:event="oninput" style="width:50%" />
+    <div>
+        Count : @Description.Length
     </div>
 </div>

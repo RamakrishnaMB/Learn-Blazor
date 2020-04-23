@@ -17,6 +17,8 @@ namespace BlazorServer.Pages
 
         public IEnumerable<Employee> Employeess { get; set; }
 
+        public bool ShowFooter { get; set; } = true;
+
         protected override async Task OnInitializedAsync()
         {
             // await Task.Run(LoadEmployees);
