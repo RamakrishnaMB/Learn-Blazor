@@ -32,6 +32,10 @@ namespace BlazorServer
             {
                 client.BaseAddress = new Uri("http://localhost:56441");
             });
+            services.AddHttpClient<IDepartmentService, DepartmentService>(client =>
+            {
+                client.BaseAddress = new Uri("http://localhost:56441");
+            });
 
         }
 
