@@ -2,10 +2,8 @@
 using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-
 
 namespace EmployeeManagement.Api.Controllers
 {
@@ -30,10 +28,8 @@ namespace EmployeeManagement.Api.Controllers
             }
             catch (System.Exception)
             {
-
                 throw;
             }
-
         }
 
         [HttpGet("{Id:int}")]
@@ -42,21 +38,17 @@ namespace EmployeeManagement.Api.Controllers
             try
             {
                 var result = await employeeRepository.GetEmployee(Id);
-
                 if (result == null)
                 {
                     return NotFound();
                 }
-
                 return result;
             }
             catch (System.Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
         }
-
 
         [HttpPost]
         public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
@@ -78,14 +70,11 @@ namespace EmployeeManagement.Api.Controllers
                     var empCreatedObj = await employeeRepository.AddEmployee(employee);
                     return CreatedAtAction(nameof(GetEmployeByID), new { Id = empCreatedObj.EmployeeId }, empCreatedObj);
                 }
-
             }
             catch (System.Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error retrieving data from database");
             }
-
         }
 
         [HttpPut("{id:int}")]
@@ -98,7 +87,6 @@ namespace EmployeeManagement.Api.Controllers
                     return BadRequest("Employe ID Mismatch");
                 }
                 var empToupdate = await employeeRepository.GetEmployee(id);
-
                 if (empToupdate == null)
                 {
                     return NotFound($"Employee with Id ={id} not found.");
@@ -107,10 +95,8 @@ namespace EmployeeManagement.Api.Controllers
             }
             catch (System.Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error Updating data from database");
             }
-
         }
 
         [HttpDelete("{id:int}")]
@@ -119,7 +105,6 @@ namespace EmployeeManagement.Api.Controllers
             try
             {
                 var emp = await employeeRepository.GetEmployee(id);
-
                 if (emp == null)
                 {
                     return NotFound($"Employee with Id ={id} not found");
@@ -128,7 +113,6 @@ namespace EmployeeManagement.Api.Controllers
             }
             catch (System.Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error Updating data from database");
             }
         }
@@ -139,7 +123,6 @@ namespace EmployeeManagement.Api.Controllers
             try
             {
                 var employees = await employeeRepository.Search(name, gender);
-
                 if (employees != null)
                 {
                     return Ok(employees);
@@ -148,14 +131,8 @@ namespace EmployeeManagement.Api.Controllers
             }
             catch (System.Exception)
             {
-
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error Updating data from database");
             }
         }
-
     }
-
-
-
-
 }
