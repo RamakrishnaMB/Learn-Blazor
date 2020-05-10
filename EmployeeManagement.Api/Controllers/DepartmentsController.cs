@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using EmployeeManagement.Api.Models;
+﻿using EmployeeManagement.Api.Models;
 using EmployeeManagement.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Threading.Tasks;
 
 namespace EmployeeManagement.Api.Controllers
 {
@@ -40,12 +38,10 @@ namespace EmployeeManagement.Api.Controllers
             try
             {
                 var result = await departmentRepository.GetDepartment(id);
-
                 if (result == null)
                 {
                     return NotFound();
                 }
-
                 return result;
             }
             catch (Exception)
